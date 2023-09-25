@@ -1,0 +1,21 @@
+class Solution {
+     public int divide(int dividend, int divisor) {
+        if (dividend==1<<31 && divisor == -1) 
+        return Integer.MAX_VALUE;
+        int a = Math.abs(dividend);
+        int b = Math.abs(divisor);
+        int r = 0;
+        while (a - b >= 0)
+        {
+            int t=b;
+            int c=1;
+            while(a-(t << 1 )>=0){
+                t <<=1;
+                c <<=1;
+            }
+            a -= t; 
+            r += c;
+        }
+        return (dividend>=0)==(divisor>=0)? r: -r;
+    }
+}
